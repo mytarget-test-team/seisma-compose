@@ -1,1 +1,2 @@
 PORT=80
+INSTALLATION_PATH=/opt/seisma-compose

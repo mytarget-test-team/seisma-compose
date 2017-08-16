@@ -7,7 +7,9 @@ Requires=docker.service
 EnvironmentFile=-/etc/default/seisma
 TimeoutStartSec=0
 Restart=always
-ExecStart=cd /opt/seisma-compose && make up
+ExecStart=/usr/bin/make up -C $INSTALLATION_PATH
+ExecStop=/usr/bin/make stop -C $INSTALLATION_PATH
+ExecReload=/usr/bin/make restart -C $INSTALLATION_PATH
 
 [Install]
 WantedBy=multi-user.target
