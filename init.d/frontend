@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+set -e
+
+NPM_BIN=npm
+PROJECT_ROOT=/usr/local/src/seisma-ui
+
+echo "Removing old dependencies..."
+rm -rf ${PROJECT_ROOT}/node_modules
+
+echo 'Installing dependencies...'
+cd ${PROJECT_ROOT} && ${NPM_BIN} install
+
+echo "Compiling js sources..."
+cd ${PROJECT_ROOT} && ${NPM_BIN} run build
+
+echo "Frontend is ready"
+while true; do sleep 1; done

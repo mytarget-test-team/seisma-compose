@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+set -xe
+
+CRON_BIN=cron
+CURL_BIN=curl
+NOHUP_BIN=nohup
+UWSGI_BIN=uwsgi
+PYTHON_BIN=python
+
+PORT=8080
+MYSQL_ADDRESS=seisma-mysql:3306
+CONFIG_FILE=/etc/seisma/seisma.ini
+
+while ! eval "${CURL_BIN} ${MYSQL_ADDRESS}"; do
+    echo "Waiting for mysql server ready..."
+     sleep 1
+done
+
+${NOHUP_BIN} ${CRON_BIN} -f > /dev/stdout 2>&1 &
+
+echo "Try to create or update database..."
+
+${PYTHON_BIN} -m seisma db init || true
+${PYTHON_BIN} -m seisma db migrate || true
+${PYTHON_BIN} -m seisma db upgrade || true
+
+echo "Run server..."
+
+${UWSGI_BIN} --ini ${CONFIG_FILE} --socket 0.0.0.0:${PORT}

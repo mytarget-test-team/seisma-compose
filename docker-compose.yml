@@ -1,0 +1,59 @@
+# Seisma docker-compose service
+
+version: '2'
+
+services:
+  seisma-src:
+    image: debian:8
+    container_name: seisma-src
+    volumes:
+      - ./src:/usr/local/src
+
+  seisma-redis:
+    image: seisma/redis
+    container_name: seisma-redis
+    shm_size: 512mb
+    expose:
+      - 6379
+
+  seisma-mysql:
+    image: seisma/mysql
+    container_name: seisma-mysql
+    shm_size: 1G
+    expose:
+      - 3306
+
+  seisma-nginx:
+    image: seisma/nginx
+    container_name: seisma-nginx
+    volumes_from:
+      - seisma-src
+    ports:
+      - ${PORT}:8080
+    depends_on:
+      - seisma-backend
+      - seisma-frontend
+    shm_size: 512mb
+    expose:
+      - 8080
+      - 8090
+
+  seisma-frontend:
+    image: seisma/frontend
+    container_name: seisma-frontend
+    volumes_from:
+      - seisma-src
+    entrypoint: '/opt/entry_point'
+
+  seisma-backend:
+    image: seisma/backend
+    container_name: seisma-backend
+    volumes_from:
+      - seisma-src
+    entrypoint: '/opt/entry_point'
+    depends_on:
+      - seisma-mysql
+      - seisma-redis
+    shm_size: 512mb
+    expose:
+      - 8080

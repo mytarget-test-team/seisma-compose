@@ -1,0 +1,13 @@
+[Unit]
+Description=Seisma test analytic system
+After=docker.service
+Requires=docker.service
+
+[Service]
+EnvironmentFile=-/etc/default/seisma
+TimeoutStartSec=0
+Restart=always
+ExecStart=cd /opt/seisma-compose && make up
+
+[Install]
+WantedBy=multi-user.target
