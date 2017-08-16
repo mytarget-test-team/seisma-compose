@@ -23,11 +23,7 @@ SEISMA_UI_GIT_REPO=https://github.com/trifonovmixail/seisma-ui.git
 SEISMA_SERVER_GIT_REPO=https://github.com/trifonovmixail/seisma-server.git
 
 
-all: _pre_install install_repositories install_dependencies build install_system_service
-
-_pre_install:
-	[ "$(CURDIR)" = "/opt/seisma-compose" ] || \
-	echo "Incorrect installation path. Must be /opt/seisma-compose" && exit 1
+all: install_repositories install_dependencies build install_system_service
 
 install_dependencies:
 	$(PIP_BIN) install docker-compose -U --user
