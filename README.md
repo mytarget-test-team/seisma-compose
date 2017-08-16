@@ -26,3 +26,11 @@ OS supported
 * CentOS 7
 * Ubuntu 16
 * Debian with systemd
+
+
+Update to new version
+---------------------
+
+```bash
+sudo make source_update -C /opt/seisma-compose && sudo systemctl restart seisma
+```
