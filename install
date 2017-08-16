@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+git clone https://github.com/trifonovmixail/seisma-compose.git /opt/seisma-compose
+make -C /opt/seisma-compose
