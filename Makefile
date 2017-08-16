@@ -12,6 +12,8 @@ DOCKER_BIN=docker
 
 COMPOSE_BIN=docker-compose
 
+SYSTEMCTL_BIN=systemctl
+
 SRC_DIR=$(CURDIR)/src
 
 UI_SRC_PATH=$(SRC_DIR)/$(PROJECT_NAME)-ui
@@ -34,8 +36,8 @@ install_repositories:
 
 install_system_service:
 	cp -f $(CURDIR)/systemd/seisma.service /usr/lib/systemd/system/seisma.service
-	cp -f $(CURDIR)/systemd/default etc/default/seisma
-	systemctl enable seisma && systemctl start seisma
+	cp -f $(CURDIR)/systemd/default /etc/default/seisma
+	$(SYSTEMCTL_BIN) enable $(PROJECT_NAME) && $(SYSTEMCTL_BIN) start $(PROJECT_NAME)
 
 up:
 	$(COMPOSE_BIN) up
