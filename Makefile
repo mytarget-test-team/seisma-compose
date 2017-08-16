@@ -23,7 +23,7 @@ SEISMA_UI_GIT_REPO=https://github.com/trifonovmixail/seisma-ui.git
 SEISMA_SERVER_GIT_REPO=https://github.com/trifonovmixail/seisma-server.git
 
 
-all: install_repositories install_dependencies build install_system_service
+all: install_dependencies install_repositories build install_system_service
 
 install_dependencies:
 	$(PIP_BIN) install docker-compose -U --user
