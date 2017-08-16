@@ -10,6 +10,14 @@ curl -L https://raw.githubusercontent.com/trifonovmixail/seisma-compose/master/i
 
 Just open localhost and enjoy!
 
+Requirements
+------------
+
+* Docker
+* Python 2.7 or more
+* GNU make
+* curl
+
 
 OS supported
 ------------
