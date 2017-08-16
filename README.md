@@ -9,3 +9,11 @@ curl -L https://raw.githubusercontent.com/trifonovmixail/seisma-compose/master/i
 ```
 
 Just open localhost and enjoy!
+
+
+OS supported
+------------
+
+* CentOS 7
+* Ubuntu 16
+* Debian with systemd
