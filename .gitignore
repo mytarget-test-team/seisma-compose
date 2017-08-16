@@ -1,0 +1,6 @@
+/src//seisma-server
+/src/seisma-ui
+
+.idea/
+
+*.py[cod]
