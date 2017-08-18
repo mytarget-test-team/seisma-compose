@@ -14,6 +14,16 @@ Just open localhost and enjoy!
 Local build
 -----------
 
+Clone repo to /opt/seima-compose
+
+if you don't have installed docker-compose, run
+
+```bash
+make install_dependencies
+```
+
+continue...
+
 ```bash
 make build install_system_service
 
