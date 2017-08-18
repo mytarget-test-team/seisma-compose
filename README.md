@@ -11,6 +11,24 @@ curl -L https://raw.githubusercontent.com/trifonovmixail/seisma-compose/master/i
 Just open localhost and enjoy!
 
 
+Local build
+-----------
+
+```bash
+make build install_system_service
+
+systemctl enable seisma && systemctl start seisma
+```
+
+
+For show logs
+-------------
+
+```bash
+journalctl -u seisma -fl
+```
+
+
 Requirements
 ------------
 
