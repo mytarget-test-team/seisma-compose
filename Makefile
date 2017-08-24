@@ -70,7 +70,7 @@ build:
 	$(DOCKER_BIN) build --rm --no-cache -t $(PROJECT_NAME)/backend:latest -f backend.Dockerfile .
 
 logs:
-	[ -z "$(s)" ] && $(COMPOSE_BIN) logs --tail="100" -f || $(COMPOSE_BIN) logs --tail="100" -f $(PROJECT_NAME)-$(s)
+	[ -z "$(s)" ] && PORT=80 $(COMPOSE_BIN) logs --tail="100" -f || PORT=80 $(COMPOSE_BIN) logs --tail="100" -f $(PROJECT_NAME)-$(s)
 
 source_update:
 	cd $(SRC_DIR)/$(PROJECT_NAME)-ui && $(GIT_BIN) pull origin master
