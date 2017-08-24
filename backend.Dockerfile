@@ -6,6 +6,8 @@ COPY etc/seisma /etc/seisma
 COPY init.d/backend /opt/entry_point
 COPY src/seisma-server/ /usr/local/src/seisma-server
 
+RUN cp -f /usr/share/zoneinfo/Europe/Moscow /etc/localtime
+
 RUN apt-get update -qqy && apt-get install -y cron gcc make
 
 COPY etc/seisma/cron.d/ /etc/cron.d
